@@ -17,6 +17,7 @@ type Props = {
   timeSeries: CovidDateData;
   stat: "confirmed" | "dead";
   reportView?: boolean;
+  data?: any;
 };
 
 export const MixedBar = (props: Props) => {
@@ -82,6 +83,7 @@ export const MixedBar = (props: Props) => {
     dedupedData.push(data[i]);
   }
 
+  console.log(dedupedData)
   return (
     <div>
       <h3>{title}</h3>
@@ -89,7 +91,7 @@ export const MixedBar = (props: Props) => {
         barSize={50}
         width={window.innerWidth * 0.9}
         height={600}
-        data={dedupedData}
+        data={props.data? props.data : dedupedData}
         margin={{
           top: 0,
           right: 0,

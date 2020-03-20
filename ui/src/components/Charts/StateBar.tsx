@@ -20,6 +20,7 @@ type Props = {
   reportView?: boolean;
   meta?: GraphMetaData;
   title?: string;
+  data?: any;
 };
 
 const colors = ["#E5A3A3", "#D05C5C", "#CB2727", "#C00000", "#900000", "#700000"];
@@ -97,7 +98,6 @@ export const StateBar = (props: Props) => {
       displayDateSet.add(key);
     }
   });
-
   return (
     <>
       <h3>{props.title ? props.title : title}</h3>
@@ -105,7 +105,7 @@ export const StateBar = (props: Props) => {
         barSize={10}
         width={window.innerWidth * 0.9}
         height={600}
-        data={dedupedData.slice(0, 10)}
+        data={props.data? props.data : dedupedData.slice(0, 10)}
         margin={{
           top: 0,
           right: 0,
